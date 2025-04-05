@@ -122,6 +122,8 @@ for _ in range(random.randint(7, 9)):
 random_click_in_rectangle((570, 343), (786, 356))
 time.sleep(random.uniform(10, 14))
 subprocess.run(["python3", "addtask.py"])
+time.sleep(1)
+subprocess.run(["python3", "suit-task.py"])
 # Step 4: Click on specific points with 2-second delays
 pyautogui.click(253, 43)
 time.sleep(1)
