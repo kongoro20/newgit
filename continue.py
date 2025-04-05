@@ -2,6 +2,7 @@ import pyautogui
 import time
 import random
 import subprocess
+import pyperclip
 # Hold Shift and press Down Arrow twice with 0.3s delay between presses
 pyautogui.keyDown('shift')
 for _ in range(2):
@@ -94,7 +95,10 @@ pyautogui.click()
 
 # Wait for a random time between 10 and 12 seconds
 time.sleep(random.uniform(1, 2))
-pyautogui.hotkey('ctrl', 'v')
+text = pyperclip.paste()
+for char in text:
+    pyautogui.write(char)
+    time.sleep(random.uniform(0.3, 0.45))
 time.sleep(random.uniform(10, 12))
 
 time.sleep(1)
