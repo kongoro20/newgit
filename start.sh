@@ -45,7 +45,7 @@ for script in "${scripts[@]}"; do
         continue
       fi
     else
-      timeout 250s python3 "$script"
+      timeout 380s python3 "$script"
       exit_status=$?
       if [[ $exit_status -eq 124 ]]; then
         echo "Script $script exceeded 250 seconds. Exiting."
