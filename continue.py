@@ -124,6 +124,7 @@ time.sleep(random.uniform(10, 14))
 subprocess.run(["python3", "addtask.py"])
 time.sleep(1)
 subprocess.run(["python3", "suit-task.py"])
+time.sleep(1)
 # Step 4: Click on specific points with 2-second delays
 pyautogui.click(253, 43)
 time.sleep(1)
