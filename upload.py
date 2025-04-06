@@ -4,7 +4,7 @@ import requests
 import time
 
 # FastAPI server URL
-FASTAPI_SERVER_URL = "https://fe38ebf6-c57e-4ba5-b241-eef83b85ea53.deepnoteproject.com/upload"
+FASTAPI_SERVER_URL = "https://4f68e2cf-7140-471d-977f-a86380d0e026.deepnoteproject.com/upload"
 # https://4f68e2cf-7140-471d-977f-a86380d0e026.deepnoteproject.com
 def get_profile_path(profile_name):
     """Finds the profile folder using the profile name."""
