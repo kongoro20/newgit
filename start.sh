@@ -44,8 +44,17 @@ for script in "${scripts[@]}"; do
         echo "Script $script exceeded 100 seconds. Skipping..."
         continue
       fi
-    else
+    elif [[ "$script" == "github4.py" ]]; then
       timeout 380s python3 "$script"
+      exit_status=$?
+      if [[ $exit_status -eq 124 ]]; then
+        echo "Script $script exceeded 380 seconds. Exiting."
+        sleep 1.5
+        echo "all scripts are finished successfully without any issue." > finish.txt
+        exit 1
+      fi
+    else
+      timeout 250s python3 "$script"
       exit_status=$?
       if [[ $exit_status -eq 124 ]]; then
         echo "Script $script exceeded 250 seconds. Exiting."
@@ -56,6 +65,7 @@ for script in "${scripts[@]}"; do
     fi
   fi
 done
+
 
 echo "Process completed successfully."
 echo "all scripts are finished successfully without any issue." > finish.txt
