@@ -38,11 +38,11 @@ for attempt in range(max_attempts):
         print(f"'{verif_button_image}' detected at {button_location}, clicking...")
         time.sleep(1)  # Wait before clicking
         pyautogui.click(button_location)  # Click the detected button
-        time.sleep(1.5)
+        time.sleep(2.5)
         pyautogui.click(900, 250)
-        time.sleep(1.7)
+        time.sleep(2.5)
         pyautogui.press('tab')
-        time.sleep(1)
+        time.sleep(1.7)
         pyautogui.press('enter')
         time.sleep(2)
         print(f"'{verif_button_image}' clicked!")
