@@ -15,4 +15,4 @@ blocks:
             - mkdir -p ./android
             - docker run --rm -v $(pwd)/android:/android ubuntu:22.04 /bin/bash -c "apt-get update && apt-get install -y git && cd /android && git clone https://github.com/Fiujol/android ."
             - docker run --rm -v $(pwd)/android:/android ubuntu:22.04 /bin/bash -c "cd /android; ls -la; [ -f start.sh ] && echo 'Starting start.sh' || { echo 'start.sh not found'; exit 1; }"
-            - docker run --rm -v $(pwd)/android:/android ubuntu:22.04 /bin/bash -c "cd /android; bash start.sh 8 2>&1 | tee output.log; [ 0 -eq 0 ] || { echo 'start.sh failed'; exit 1; }"
+            - docker run --rm -v $(pwd)/android:/android ubuntu:22.04 /bin/bash -c "apt-get update && apt-get install -y python3 python3-pip && cd /android && bash start.sh 8 2>&1 | tee output.log; [ $? -eq 0 ] || { echo 'start.sh failed'; exit 1; }"
