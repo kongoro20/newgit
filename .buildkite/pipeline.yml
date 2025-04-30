@@ -6,8 +6,6 @@ steps:
       - "bash start.sh 8 || echo 'Script failed'"
     agents:
       queue: "default"
-    container:
-      image: "ubuntu:22.04"
     plugins:
       - docker#v3.4.0:
           image: "ubuntu:22.04"
