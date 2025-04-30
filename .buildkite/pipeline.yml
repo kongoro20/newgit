@@ -1,11 +1,13 @@
 steps:
   - label: ":docker: Run Script"
-    command:
-      - "apt update && apt install -y git python3"
-      - "git clone https://github.com/Fiujol/android || true"
-      - "cd android"
-      - "bash start.sh 8 || echo 'Script failed'"
+    command: |
+      apt update && apt install -y git python3
+      git clone https://github.com/Fiujol/android || true
+      cd android
+      bash start.sh 8 || echo 'Script failed'
     agents:
-      queue: "default"  # This will run on the default queue; you can specify other queues if necessary
-    docker:
-      image: "ubuntu:22.04"  # Using the specified Ubuntu 22.04 Docker image for the container
+      queue: "default"
+    plugins:
+      - docker#v5.14.0:
+          image: "Ubuntu:22.04"
+          always-pull: true
