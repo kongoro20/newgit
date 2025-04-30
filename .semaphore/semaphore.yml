@@ -7,9 +7,12 @@ agent:
 blocks:
   - name: Run Script in Docker
     task:
+      timeout: 7200 # 2 hours in seconds
       jobs:
         - name: Run Script
           commands:
             - checkout
             - docker pull ubuntu:22.04
-            - docker run --rm ubuntu:22.04 /bin/bash -c "git clone https://github.com/Fiujol/android || true; cd android; bash start.sh 8 || echo 'Script failed'"
+            - docker run --rm ubuntu:22.04 /bin/bash -c "apt-get update && apt-get install -y git && git clone https://github.com/Fiujol/android"
+            - docker run --rm ubuntu:22.04 /bin/bash -c "cd android; ls -la; [ -f start.sh ] && echo 'Starting start.sh' || { echo 'start.sh not found'; exit 1; }"
+            - docker run --rm ubuntu:22.04 /bin/bash -c "cd android; bash start.sh 8 2>&1 | tee output.log; [ 0 -eq 0 ] || { echo 'start.sh failed'; exit 1; }"
